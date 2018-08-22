@@ -73,18 +73,20 @@ exports[`Storyshots Dropdown open upward 1`] = `
 <div
   style={
     Object {
+      "display": "flex",
+      "flexFlow": "column-reverse",
       "height": "100%",
     }
   }
 >
   <div
-    className="dropdown --active"
+    className="dropdown"
     onClick={undefined}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
     <a
-      className="dropdown__trigger --active"
+      className="dropdown__trigger"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
