@@ -28,8 +28,7 @@ const squelchEvent = event => { event.stopPropagation() }
 
 class Dropdown extends React.Component {
 
-	// elementRef = React.createRef()
-	elementRef
+	elementRef = React.createRef()
 
 	state = {
 		hasFocus: false,
@@ -163,11 +162,16 @@ class Dropdown extends React.Component {
 		if (!this.state.hasFocus) return
 
 		const dropdownNode = findDOMNode(this)
+
 		const isNotInDropdown = (
 			dropdownNode &&
-			event.relatedTarget.constructor.name.includes('Element') &&
-			event.relatedTarget !== dropdownNode &&
-			!dropdownNode.contains(event.relatedTarget)
+			event.relatedTarget.constructor.name === 'Window' ?
+				true : 
+				(
+					event.relatedTarget.constructor.name.includes('Element') &&
+					event.relatedTarget !== dropdownNode &&
+					!dropdownNode.contains(event.relatedTarget)
+				)
 		)
 
 		if (isNotInDropdown) this.hide()
@@ -185,6 +189,7 @@ class Dropdown extends React.Component {
 			onMouseLeave: this.addEventHandler(
 				trigger, 'onMouseLeave', this.handleMouseLeave
 			),
+			_isActive: this.state.hasFocus,
 		}
 	)
 
@@ -234,12 +239,8 @@ class Dropdown extends React.Component {
 		const { hasFocus } = this.state
 
 		return (
-			// TEMP - for some reason the new ref api isn't working in all dev environments
-			// ref={this.elementRef}
 			<div
-				ref={element => {
-					this.elementRef = { current: element }
-				}}
+				ref={this.elementRef}
 				className={classNames(
 					'dropdown',
 					hasFocus && '--active',
@@ -274,7 +275,7 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.defaultProps = {
-	justify: 'right',
+	justify: 'left',
 	isHoverable: false,
 	shouldStopClickPropagation: false,
 	className: '',

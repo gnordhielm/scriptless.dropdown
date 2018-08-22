@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Content with items 1`] = `
+<div
+  className="dropdown__content"
+>
+  <div
+    className="__item"
+  >
+    Item 1
+  </div>
+  <div
+    className="__item"
+  >
+    Item 2
+  </div>
+</div>
+`;
+
+exports[`Storyshots Content with plain content 1`] = `
+<div
+  className="dropdown__content"
+>
+  <div
+    style={
+      Object {
+        "padding": "1rem",
+      }
+    }
+  >
+    Content
+  </div>
+</div>
+`;
+
+exports[`Storyshots Dropdown controlled 1`] = `
+<div
+  className="dropdown"
+  onClick={undefined}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    className="dropdown__trigger"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    Trigger
+  </a>
+</div>
+`;
+
+exports[`Storyshots Dropdown hoverable 1`] = `
+<div
+  className="dropdown"
+  onClick={undefined}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    className="dropdown__trigger"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    Trigger
+  </a>
+</div>
+`;
+
+exports[`Storyshots Dropdown open upward 1`] = `
+<div
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
+>
+  <div
+    className="dropdown --active"
+    onClick={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <a
+      className="dropdown__trigger --active"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      Trigger
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Dropdown plain 1`] = `
+<div
+  className="dropdown"
+  onClick={undefined}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    className="dropdown__trigger"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    Trigger
+  </a>
+</div>
+`;
+
+exports[`Storyshots Dropdown right justified 1`] = `
+<div
+  className="dropdown --active"
+  onClick={undefined}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    className="dropdown__trigger --active"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    Trigger
+  </a>
+</div>
+`;
+
+exports[`Storyshots Dropdown with items 1`] = `
+<div
+  className="dropdown"
+  onClick={undefined}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <a
+    className="dropdown__trigger"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    Trigger
+  </a>
+</div>
+`;
+
+exports[`Storyshots Item with content 1`] = `
+<div
+  className="__item"
+  onClick={[Function]}
+>
+  Text
+</div>
+`;
+
+exports[`Storyshots Item with first child content 1`] = `
+<div
+  className="__item"
+  onClick={[Function]}
+>
+  <span>
+    ❗️
+  </span>
+  <span>
+    Text
+  </span>
+</div>
+`;
+
+exports[`Storyshots Trigger plain trigger 1`] = `
+<a
+  className="dropdown__trigger"
+  onClick={[Function]}
+>
+  Trigger
+</a>
+`;
+
+exports[`Storyshots Trigger with active dropdown 1`] = `
+<a
+  className="dropdown__trigger --active"
+  onClick={[Function]}
+>
+  Trigger
+</a>
+`;

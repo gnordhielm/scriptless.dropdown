@@ -5,5 +5,8 @@
     "setupFiles": [
         "raf/polyfill",
         "<rootDir>/test/config.js"
+    ],
+    "transformIgnorePatterns": [
+        "/node_modules/(?!(@storybook/.*\\.vue$))"
     ]
 }

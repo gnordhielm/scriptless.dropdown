@@ -1,0 +1,20 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#root {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: 400;
+    font-size: 16px;
+    background-color: gray;
+    padding: 20px;
+    flex: 1;
+}

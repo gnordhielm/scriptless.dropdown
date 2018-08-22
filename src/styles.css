@@ -1,64 +1,54 @@
-/* .dropdown {
-    font-size: $m-font;
+.dropdown {
+    font-size: 1rem;
     position: relative;
     display: inline-block;
+}
 
-    & > .__trigger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: $light-1;
-        fill: $light-1;
-        transition: 
-            color $transition, 
-            fill $transition;
-    }
+.dropdown__trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
 
-    &.--active > .__trigger {
-        color: $light-3;
-        fill: $light-3;
-    }
-
+.dropdown__trigger.--active {
+    color: white;
+    fill: white;
 }
 
 .dropdown__content {
-    font-size: $m-font;
+    font-size: 1rem;
     position: absolute;
-    background: transparentize($lightest, 0.075);
-    box-shadow: $dropdown-shadow;
+    background: white;
     flex-flow: column nowrap;
-    color: $light-1;
-    fill: $light-1;
-    // min-width: 100%;
-    // right: 3px;
-    z-index: 6;
-    
-    & > .__item {
-        padding: $s-size $m-size;
-        text-decoration: none;
-        white-space: nowrap;
-        user-select: none;
-        vertical-align: middle;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-    
-        &:hover {
-            // background: lighten($light-2, 3);
-            background: $light-3;
-        }
-        
-        &,
-        & > a {
-            color: $dark-1;
-            fill: $dark-1;
-        }
+    border: 1px solid black;
+    color: black;
+    fill: black;
+    z-index: 1;
+}
 
-        .icon:first-child {
-            margin-right: $s-size;
-            height: $m-font;
-            width: $m-font;
-        }
-    }
-} */
+.dropdown__content > .__item {
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    vertical-align: middle;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.dropdown__content > .__item:hover {
+    background: #c5c5c5;
+}
+.dropdown__content > .__item,
+.dropdown__content > .__item > a {
+    color: black;
+    fill: black;
+}
+
+.icon:first-child {
+    margin-right: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+}
