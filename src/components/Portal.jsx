@@ -6,8 +6,8 @@ import { classNames } from '@leiops/helpers'
 import { FRAME_RATE_MS } from '../constants'
 import { isDefined, getPageOffset, noop } from '../utils'
 import _debounce from 'lodash.debounce'
-import Trigger from '../stories/Trigger'
-import Content from '../stories/Content'
+import Trigger from './Trigger'
+import Content from './Content'
 
 const minDropdownHeight = 200
 
