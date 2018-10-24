@@ -3,17 +3,31 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 
-import Dropdown from './Dropdown'
-import Trigger from './Trigger'
-import Content from './Content'
-import Item from './Item'
+import Dropdown from '../components/Dropdown.jsx'
+import Trigger from '../components/Trigger.jsx'
+import Content from '../components/Content.jsx'
+import Item from '../components/Item.jsx'
 
 
 storiesOf('Dropdown', module)
     .addDecorator(withKnobs)
-    .add('plain', () => (
+    .add('basic', () => (
         <Dropdown>
             <Trigger>Trigger</Trigger>
+            <Content>
+                <div style={{ padding: '0.5rem' }}>
+                    Content
+                </div>
+            </Content>
+        </Dropdown>
+    ))
+    .add('complex trigger', () => (
+        <Dropdown>
+            <Trigger>
+                <div>
+                    <input type="text" />
+                </div>
+            </Trigger>
             <Content>
                 <div style={{ padding: '0.5rem' }}>
                     Content

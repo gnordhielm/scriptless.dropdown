@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { findDOMNode } from 'react-dom'
 import { classNames } from '@leiops/helpers'
 import { isDefined, getPageOffset, noop } from '../utils'
-import Trigger from './Trigger'
-import Content from './Content'
+import Trigger from '../components/Trigger.jsx'
+import Content from '../components/Content.jsx'
 
 const minDropdownHeight = 200
 

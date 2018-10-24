@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 // import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
 
-import Trigger from './Trigger'
+import Trigger from '../components/Trigger.jsx'
 
 storiesOf('Trigger', module)
   .add('plain trigger', () => 
