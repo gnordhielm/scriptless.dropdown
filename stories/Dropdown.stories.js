@@ -3,10 +3,10 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 
-import Dropdown from '../components/Dropdown.jsx'
-import Trigger from '../components/Trigger.jsx'
-import Content from '../components/Content.jsx'
-import Item from '../components/Item.jsx'
+import Dropdown from '../src/components/Dropdown.jsx'
+import Trigger from '../src/components/Trigger.jsx'
+import Content from '../src/components/Content.jsx'
+import Item from '../src/components/Item.jsx'
 
 
 storiesOf('Dropdown', module)

@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 // import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
 
-import Content from '../components/Content.jsx'
-import Item from '../components/Item.jsx'
+import Content from '../src/components/Content.jsx'
+import Item from '../src/components/Item.jsx'
 
 storiesOf('Content', module)
   .add('with plain content', () => 

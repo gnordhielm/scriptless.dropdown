@@ -70,6 +70,7 @@ class Dropdown extends React.Component {
 	
 	componentWillUnmount() {
 		window.removeEventListener('click', this.handleWindowClick)
+		this.observer.disconnect()
 	}
 
 	handleMutation = mutationList => {

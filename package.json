@@ -1,6 +1,6 @@
 {
   "name": "@leiops/dropdown",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.2",
   "description": "A flexible dropdown component system for React Apps.",
   "main": "./dist/main.js",
   "scripts": {
@@ -14,10 +14,7 @@
   "keywords": [
     "react",
     "dropdown",
-    "component",
-    "modular",
-    "menu",
-    "ui"
+    "component"
   ],
   "contributors": [
     {

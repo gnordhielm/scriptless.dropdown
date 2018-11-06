@@ -7,55 +7,28 @@ A flexible dropdown component system for React Apps.
 
 ### How to use
 
-This library provides three React components that you can use as a basis for any kind of dropdown menu:
+This library provides several components which you can use as a basis for any kind of dropdown menu:
 
-- `Dropdown`: The base element for your dropdown. This contains both the `Trigger` and the `Content`, and handles communication between them.
-- `Trigger`: The element that will cause your dropdown to appear when clicked.
-- `Content`: Contains the "filling" of your dropdown. Generally, this is a list of links.
+`Dropdown` - a wrapper element for everything.
+`Dropdown.Trigger` - the element which tells the Dropdown container to show the dropdown \.
+`Dropdown.Content` - a wrapper for all of the content hidden/shown at the discretion of the Dropdown container.
 
 Keep in mind that `Trigger` and `Content` **must be direct children** of `Dropdown`. Here's a quick example:
 
-```js
-var React = require('react');
-var Dropdown = require('react-simple-dropdown');
+```jsx
+import Dropdown from '@leiops/dropdown'
 
-var Menu = React.createClass({
-    render: function () {
-        return (
-            <Dropdown>
-                <Dropdown.Trigger>Profile</Dropdown.Trigger>
-                <Dropdown.Content>
-                    <img src="avatar.jpg" /> Username
-                    <ul>
-                        <li>
-                            <a href="/profile">Profile</a>
-                        </li>
-                        <li>
-                            <a href="/favorites">Favorites</a>
-                        </li>
-                        <li>
-                            <a href="/logout">Log Out</a>
-                        </li>
-                    </ul>
-                </Dropdown.Content>
-            </Dropdown>
-        )
-    }
-});
+
+const Menu = ({ onLogOut, onToggleMode }) => (
+    <Dropdown>
+        <Dropdown.Trigger>Profile</Dropdown.Trigger>
+        <Dropdown.Content>
+            <div onClick={onToggleMode}>Toggle Dark Mode</div>
+            <div onClick={onLogOut}>Log Out</div>
+        </Dropdown.Content>
+    </Dropdown>
+)
 ```
-
-### Options
-
-Options can be passed to `Dropdown` as props. A list of available options can be found below. These must be passed to the containing `Dropdown` component.
-
-Property | Type | Description
------ | ----- | -----
-**active** | *boolean* | Manually show/hide the `Content`. Make sure to unset this or the dropdown will stay open.
-**disabled** | *boolean* | Disable toggling of the dropdown by clicking on `Trigger`. Toggling with `active`, `show()`, and `hide()` is still possible.
-**removeElement** | *boolean* | Remove the `Content` element when inactive (rather than just hide it).
-**onShow** | *function* | Callback for when `Content` is shown.
-**onHide** | *function* | Callback for when `Content` is hidden.
-
 
 ### Instance
 
