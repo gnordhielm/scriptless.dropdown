@@ -1,6 +1,6 @@
-export const isDefined = a => a !== undefined
+import isDefined from './isDefined'
 
-export const getPageOffset = () => ({
+export default () => ({
 	x: isDefined(window.pageXOffset) ?
 		window.pageXOffset : 
 		(document.documentElement || document.body.parentNode || document.body)
@@ -10,5 +10,3 @@ export const getPageOffset = () => ({
 		(document.documentElement || document.body.parentNode || document.body)
 			.scrollTop,
 })
-
-export const noop = () => {}

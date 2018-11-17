@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
+import _debounce from 'lodash.debounce'
 import { findDOMNode } from 'react-dom'
 import { classNames } from '@leiops/helpers'
 import { FRAME_RATE_MS } from '../constants'
-import { isDefined, getPageOffset, noop } from '../utils'
-import _debounce from 'lodash.debounce'
+import isDefined from '../utils/isDefined'
+import getPageOffset from '../utils/getPageOffset'
+import noop from '../utils/noop'
 import Trigger from './Trigger'
 import Content from './Content'
 
@@ -134,7 +136,7 @@ class Dropdown extends React.Component {
 	handleWindowClick = event => {
 		if (!this.state.hasFocus) return
 		
-		const dropdownNode = findDOMNode(this)
+		const dropdownNode = findDOMNode(this.elementRef.current)
 		const isNotInDropdown = (
 			dropdownNode &&
 			event.target.constructor.name.includes('Element') &&
@@ -176,7 +178,7 @@ class Dropdown extends React.Component {
 		if (!this.props.isHoverable) return
 		if (this.state.hasFocus) return
 
-		const thisElement = findDOMNode(this)
+		const thisElement = findDOMNode(this.elementRef.current)
 		const isInDropdown = (
 			thisElement && 
 			event.target.constructor.name.includes('Element') &&
@@ -203,7 +205,7 @@ class Dropdown extends React.Component {
 		if (!this.props.isHoverable) return
 		if (!this.state.hasFocus) return
 
-		const dropdownNode = findDOMNode(this)
+		const dropdownNode = findDOMNode(this.elementRef.current)
 		const isNotInDropdown = (
 			dropdownNode &&
 			event.relatedTarget.constructor.name.includes('Element') &&

@@ -63,9 +63,18 @@ storiesOf('Dropdown', module)
             </Content>
         </Dropdown>
     ))
-    .add('right justified', () => (
-        <Dropdown hasFocus justify={'right'}>
+    .add('disabled trigger', () => (
+        <Dropdown>
             <Trigger isDisabled>Trigger</Trigger>
+            <Content>
+                <Item>Item 1</Item>
+                <Item>Item 2</Item>
+            </Content>
+        </Dropdown>
+    ))
+    .add('right justified', () => (
+        <Dropdown justify={'right'}>
+            <Trigger>Trigger</Trigger>
             <Content>
                 <div style={{ padding: '0.5rem' }}>
                     Content

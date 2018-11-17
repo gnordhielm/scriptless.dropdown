@@ -2,7 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { findDOMNode } from 'react-dom'
 import { classNames } from '@leiops/helpers'
-import { isDefined, getPageOffset, noop } from '../utils'
+import isDefined from '../utils/isDefined'
+import getPageOffset from '../utils/getPageOffset'
+import noop from '../utils/noop'
+import squelchEvent from '../utils/squelchEvent'
 import Trigger from './Trigger.jsx'
 import Content from './Content.jsx'
 
@@ -23,8 +26,6 @@ const getPosition = element => {
 		bottom,
 	}
 }
-
-const squelchEvent = event => { event.stopPropagation() }
 
 class Dropdown extends React.Component {
 
@@ -47,12 +48,12 @@ class Dropdown extends React.Component {
 	}
 
 	componentDidUpdate(lastProps, lastState) {
-
 		// gained focus
 		if (!lastState.hasFocus && this.state.hasFocus)
 		{
 			this.observer.observe(
-				findDOMNode(this), 
+				// findDOMNode(this),
+				findDOMNode(this.elementRef.current),
 				{ 
 					childList: true,
 					subtree: true,
@@ -111,9 +112,10 @@ class Dropdown extends React.Component {
 		}
 
 	handleWindowClick = event => {
+		
 		if (!this.state.hasFocus) return
 		
-		const dropdownNode = findDOMNode(this)
+		const dropdownNode = findDOMNode(this.elementRef.current)
 		const isNotInDropdown = (
 			dropdownNode &&
 			event.target.constructor.name.includes('Element') &&

@@ -13,8 +13,8 @@
 }
 
 .dropdown__trigger.--active {
-    color: white;
-    fill: white;
+    color: #c5c5c5;
+    fill: #c5c5c5;
 }
 
 .dropdown__content {
