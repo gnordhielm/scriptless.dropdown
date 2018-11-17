@@ -45,21 +45,11 @@ storiesOf('Dropdown', module)
             </Content>
         </Dropdown>
     ))
-    .add('with items', () => (
-        <Dropdown>
-            <Trigger>Trigger</Trigger>
-            <Content>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
-            </Content>
-        </Dropdown>
-    ))
     .add('controlled', () => (
         <Dropdown hasFocus={boolean('Has Focus', false)}>
             <Trigger isDisabled>Trigger</Trigger>
             <Content>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
+                I am content, hear me roar.
             </Content>
         </Dropdown>
     ))
@@ -67,8 +57,7 @@ storiesOf('Dropdown', module)
         <Dropdown>
             <Trigger isDisabled>Trigger</Trigger>
             <Content>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
+                I am content, hear me roar.
             </Content>
         </Dropdown>
     ))

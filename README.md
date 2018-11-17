@@ -1,46 +1,38 @@
-# @leiops/dropdown
+# @scriptless/dropdown
 
-[![npm](https://img.shields.io/npm/dt/@leiops/dropdown.svg?style=flat-square)](https://www.npmjs.com/package/@leiops/dropdown)
-[![npm](https://img.shields.io/npm/v/@leiops/dropdown.svg?style=flat-square)](https://www.npmjs.com/package/@leiops/dropdown)
+<img src="https://siteless.co/assets/image/5710239819104256" width="600" />
 
-A flexible dropdown component system for React Apps.
+[![npm](https://img.shields.io/npm/dt/@scriptless/dropdown.svg?style=flat-square)](https://www.npmjs.com/package/@scriptless/dropdown)
+[![npm](https://img.shields.io/npm/v/@scriptless/dropdown.svg?style=flat-square)](https://www.npmjs.com/package/@scriptless/dropdown)
 
-### How to use
+A flexible dropdown component system for React apps.
 
-This library provides several components which you can use as a basis for any kind of dropdown menu:
+## Quick Start
 
-`Dropdown` - a wrapper element for everything.
-`Dropdown.Trigger` - the element which tells the Dropdown container to show the dropdown \.
-`Dropdown.Content` - a wrapper for all of the content hidden/shown at the discretion of the Dropdown container.
+This library provides a default export, `Dropdown`, which will wrap any dropdown setup. It drives the robust focus-management logic that this library provides.
 
-Keep in mind that `Trigger` and `Content` **must be direct children** of `Dropdown`. Here's a quick example:
+`Dropdown` also provides two children, `Dropdown.Trigger` and `Dropdown.Content`, everything you need to compose a dropdown. Here's an example:
 
 ```jsx
-import Dropdown from '@leiops/dropdown'
+import React from 'react'
+import Dropdown from '@scriptless/dropdown'
 
-
-const Menu = ({ onLogOut, onToggleMode }) => (
-    <Dropdown>
-        <Dropdown.Trigger>Profile</Dropdown.Trigger>
-        <Dropdown.Content>
-            <div onClick={onToggleMode}>Toggle Dark Mode</div>
-            <div onClick={onLogOut}>Log Out</div>
-        </Dropdown.Content>
-    </Dropdown>
+const UserMenu = props => (
+    <div className="UserMenu">
+        <Dropdown>
+            <Dropdown.Trigger>
+                {props.userName}
+            </Dropdown.Trigger>
+            <Dropdown.Content>
+                <img src={props.userAvatar} />
+            </Dropdown.Content>
+        </Dropdown>
+    </div>
 )
+
+export default UserMenu
+
 ```
 
-### Instance
+`Dropdown.Trigger` will always be rendered to the screen, clicking it will show and hide `Dropdown.Content`.
 
-Each instance of `Dropdown` has some methods developers might find useful.
-
-Method | Description
------ | -----
-**show** | Shows the dropdown.
-**hide** | Hides the dropdown.
-
-### Working
-
-Right now, the dropdown watches child mutations and puts together a list of every element removed from within in order to deal with a situation where removing a child which was clicked on would close the dropdown. This may not be the desired behavior, perhaps only one removed item should be saved?
-
-Portal and Dropdown contain almost idential code, I bet that can be dried up.

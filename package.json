@@ -1,7 +1,7 @@
 {
-  "name": "@leiops/dropdown",
-  "version": "1.0.0-alpha.2",
-  "description": "A flexible dropdown component system for React Apps.",
+  "name": "@scriptless/dropdown",
+  "version": "1.0.0-alpha.0",
+  "description": "A flexible dropdown component system for React apps.",
   "main": "./dist/main.js",
   "scripts": {
     "prepublishOnly": "yarn run dist",

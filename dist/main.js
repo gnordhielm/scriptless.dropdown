@@ -328,18 +328,6 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\n
 
 /***/ }),
 
-/***/ "./src/components/Item.jsx":
-/*!*********************************!*\
-  !*** ./src/components/Item.jsx ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _helpers = __webpack_require__(/*! @leiops/helpers */ \"./node_modules/@leiops/helpers/dist/main.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }\n\nvar Item = function Item(_ref) {\n    var children = _ref.children,\n        className = _ref.className,\n        rest = _objectWithoutProperties(_ref, ['children', 'className']);\n\n    return _react2.default.createElement(\n        'div',\n        _extends({}, rest, {\n            className: (0, _helpers.classNames)('__item', className)\n        }),\n        children\n    );\n};\n\nItem.propTypes = {\n    children: _propTypes2.default.node.isRequired,\n    className: _propTypes2.default.string\n};\n\nItem.defaultProps = {\n    className: ''\n};\n\nexports.default = Item;\n\n//# sourceURL=webpack:///./src/components/Item.jsx?");
-
-/***/ }),
-
 /***/ "./src/components/Portal.jsx":
 /*!***********************************!*\
   !*** ./src/components/Portal.jsx ***!
@@ -384,7 +372,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Dropdown = __webpack_require__(/*! ./components/Dropdown */ \"./src/components/Dropdown.jsx\");\n\nvar _Dropdown2 = _interopRequireDefault(_Dropdown);\n\nvar _Portal = __webpack_require__(/*! ./components/Portal */ \"./src/components/Portal.jsx\");\n\nvar _Portal2 = _interopRequireDefault(_Portal);\n\nvar _Trigger = __webpack_require__(/*! ./components/Trigger */ \"./src/components/Trigger.jsx\");\n\nvar _Trigger2 = _interopRequireDefault(_Trigger);\n\nvar _Content = __webpack_require__(/*! ./components/Content */ \"./src/components/Content.jsx\");\n\nvar _Content2 = _interopRequireDefault(_Content);\n\nvar _Item = __webpack_require__(/*! ./components/Item */ \"./src/components/Item.jsx\");\n\nvar _Item2 = _interopRequireDefault(_Item);\n\n__webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_Dropdown2.default.Portal = _Portal2.default;\n_Dropdown2.default.Trigger = _Trigger2.default;\n_Dropdown2.default.Content = _Content2.default;\n_Dropdown2.default.Item = _Item2.default;\n\nexports.default = _Dropdown2.default;\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.PortalDropdown = undefined;\n\nvar _Portal = __webpack_require__(/*! ./components/Portal */ \"./src/components/Portal.jsx\");\n\nObject.defineProperty(exports, 'PortalDropdown', {\n  enumerable: true,\n  get: function get() {\n    return _Portal.Portal;\n  }\n});\n\nvar _Dropdown = __webpack_require__(/*! ./components/Dropdown */ \"./src/components/Dropdown.jsx\");\n\nvar _Dropdown2 = _interopRequireDefault(_Dropdown);\n\nvar _Trigger = __webpack_require__(/*! ./components/Trigger */ \"./src/components/Trigger.jsx\");\n\nvar _Trigger2 = _interopRequireDefault(_Trigger);\n\nvar _Content = __webpack_require__(/*! ./components/Content */ \"./src/components/Content.jsx\");\n\nvar _Content2 = _interopRequireDefault(_Content);\n\n__webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_Dropdown2.default.Trigger = _Trigger2.default;\n_Dropdown2.default.Content = _Content2.default;\n\nexports.default = _Dropdown2.default;\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
