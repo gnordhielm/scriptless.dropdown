@@ -1,6 +1,6 @@
 {
   "name": "@scriptless/dropdown",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "A flexible dropdown component system for React apps.",
   "main": "./dist/main.js",
   "scripts": {
@@ -11,30 +11,25 @@
     "build-storybook": "build-storybook",
     "test": "react-scripts test --env=jsdom"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnordhielm/scriptless.dropdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gnordhielm/scriptless.dropdown/issues"
+  },
+  "homepage": "https://github.com/gnordhielm/scriptless.dropdown#readme",
   "keywords": [
     "react",
     "dropdown",
-    "component"
+    "component",
+    "composable",
+    "less",
+    "frontend",
+    "javascript"
   ],
-  "contributors": [
-    {
-      "name": "Fran Budiman",
-      "email": "fbudiman@avtr.com"
-    },
-    {
-      "name": "Thomas Huisking",
-      "email": "thuisking@avtr.com"
-    },
-    {
-      "name": "Shon Mordo",
-      "email": "smordo@avtr.com"
-    },
-    {
-      "name": "Gus Nordhielm",
-      "email": "gnordhielm@avtr.com"
-    }
-  ],
-  "license": "MIT",
+  "author": "Gus Nordhielm",
+  "license": "ISC",
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.10",
     "@storybook/addon-knobs": "^3.4.10",

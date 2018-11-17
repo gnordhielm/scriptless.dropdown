@@ -210,7 +210,7 @@ class Dropdown extends React.Component {
 		else
 			finalPosition.bottom = '100%'
 
-		finalPosition[this.props.justify] = '-3px'
+		finalPosition[this.props.justify] = this.props.justifyOffset
 
 		return React.cloneElement(
 			content, 
@@ -279,6 +279,7 @@ class Dropdown extends React.Component {
 
 Dropdown.defaultProps = {
 	justify: 'left',
+	justifyOffset: '0',
 	isHoverable: false,
 	shouldStopClickPropagation: false,
 	className: '',
@@ -289,6 +290,8 @@ Dropdown.defaultProps = {
 Dropdown.propTypes = {
 	// left or right, the component will try to keep the specified side justified to the dropdown trigger as long as there is space
 	justify: PropTypes.oneOf(['right', 'left']),
+	// the value for style.right or style.left, depending on the vaue of justify
+	justifyOffset: PropTypes.string,
 	// should the dropdown open on mouseenter and close on mouseleave
 	isHoverable: PropTypes.bool,
 	// stop the dropdown from accepting user interactions

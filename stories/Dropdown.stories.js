@@ -61,7 +61,17 @@ storiesOf('Dropdown', module)
         </Dropdown>
     ))
     .add('right justified', () => (
-        <Dropdown justify={'right'}>
+        <Dropdown justify="right">
+            <Trigger>Trigger</Trigger>
+            <Content>
+                <div style={{ padding: '0.5rem' }}>
+                    Content
+                </div>
+            </Content>
+        </Dropdown>
+    ))
+    .add('right justified with justifyOffset', () => (
+        <Dropdown justify="right" justifyOffset="-10px">
             <Trigger>Trigger</Trigger>
             <Content>
                 <div style={{ padding: '0.5rem' }}>
