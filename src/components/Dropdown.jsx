@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { findDOMNode } from 'react-dom'
 import { classNames } from '@leiops/helpers'
 import isDefined from '../utils/isDefined'
 import getPageOffset from '../utils/getPageOffset'
@@ -29,7 +28,8 @@ const getPosition = element => {
 
 class Dropdown extends React.Component {
 
-	elementRef = React.createRef()
+	dropdownRef = React.createRef()
+	triggerRef = React.createRef()
 
 	state = {
 		hasFocus: false,
@@ -52,8 +52,7 @@ class Dropdown extends React.Component {
 		if (!lastState.hasFocus && this.state.hasFocus)
 		{
 			this.observer.observe(
-				// findDOMNode(this),
-				findDOMNode(this.elementRef.current),
+				this.dropdownRef.current,
 				{ 
 					childList: true,
 					subtree: true,
@@ -112,10 +111,29 @@ class Dropdown extends React.Component {
 		}
 
 	handleWindowClick = event => {
+
+		const triggerNode = this.triggerRef.current
+		const isTriggerClick = (
+			triggerNode &&
+			(triggerNode === event.target || triggerNode.contains(event.target))
+		)
+
+		if (isTriggerClick)
+		{
+			event.preventDefault()
+			if (this.state.hasFocus)
+				this.hide()
+			else
+				this.show()
+
+			return
+		}
+
+
 		
 		if (!this.state.hasFocus) return
 		
-		const dropdownNode = findDOMNode(this.elementRef.current)
+		const dropdownNode = this.dropdownRef.current
 		const isNotInDropdown = (
 			dropdownNode &&
 			event.target.constructor.name.includes('Element') &&
@@ -132,22 +150,16 @@ class Dropdown extends React.Component {
 				break
 			}
 
-		if (isNotInDropdown && !wasRemovedFromDropdown) this.hide()
-	}
+		console.log('handle window click', dropdownNode, event.target, this.removedNodes);
 
-	handleTriggerClick = event => {
-		event.preventDefault()
-		if (this.state.hasFocus)
-			this.hide()
-		else
-			this.show()
+		if (isNotInDropdown && !wasRemovedFromDropdown) this.hide()
 	}
 
 	handleMouseEnter = event => {
 		if (!this.props.isHoverable) return
 		if (this.state.hasFocus) return
 
-		const thisElement = findDOMNode(this)
+		const thisElement = this.dropdownRef.current
 		const isInDropdown = (
 			thisElement && 
 			event.target.constructor.name.includes('Element') &&
@@ -164,7 +176,7 @@ class Dropdown extends React.Component {
 		if (!this.props.isHoverable) return
 		if (!this.state.hasFocus) return
 
-		const dropdownNode = findDOMNode(this)
+		const dropdownNode = this.dropdownRef.current
 
 		const isNotInDropdown = (
 			dropdownNode &&
@@ -180,12 +192,14 @@ class Dropdown extends React.Component {
 		if (isNotInDropdown) this.hide()
 	}
 
+	// TO DO - I guess I'm allowed to do whatever I want to the trigger, since it's a wrapper node? Ideally, there wouldn't be a wrapper node added, but then I have to figure out how to reference the trigger locally without overwriting a possible ref passed by the user.
+
 	renderTrigger = trigger => React.cloneElement(
 		trigger, 
 		{
-			onClick: this.addEventHandler(
-				trigger, 'onClick', this.handleTriggerClick
-			),
+			// onClick: this.addEventHandler(
+			// 	trigger, 'onClick', this.handleTriggerClick
+			// ),
 			onMouseEnter: this.addEventHandler(
 				trigger, 'onMouseEnter', this.handleMouseEnter
 			),
@@ -193,15 +207,16 @@ class Dropdown extends React.Component {
 				trigger, 'onMouseLeave', this.handleMouseLeave
 			),
 			_isActive: this.state.hasFocus,
+			_passRef: this.triggerRef,
 		}
 	)
 
 	renderContent = content => {
 
-		if (!this.elementRef.current) return null
+		if (!this.dropdownRef.current) return null
 
 		const finalPosition = {}
-		const position = getPosition(this.elementRef.current)
+		const position = getPosition(this.dropdownRef.current)
 
 		const isBelow = (position.bottom + minDropdownHeight) < window.innerHeight
 
@@ -243,7 +258,7 @@ class Dropdown extends React.Component {
 
 		return (
 			<div
-				ref={this.elementRef}
+				ref={this.dropdownRef}
 				className={classNames(
 					'dropdown',
 					hasFocus && '--active',

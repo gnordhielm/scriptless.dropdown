@@ -2,11 +2,15 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
+import { State, Store } from "@sambego/storybook-state"
 
 import Dropdown from '../src/components/Dropdown.jsx'
 import Trigger from '../src/components/Trigger.jsx'
 import Content from '../src/components/Content.jsx'
 
+const store = new Store({
+    isTrue: false
+})
 
 storiesOf('Dropdown', module)
     .addDecorator(withKnobs)
@@ -20,7 +24,7 @@ storiesOf('Dropdown', module)
             </Content>
         </Dropdown>
     ))
-    .add('complex trigger', () => (
+    .add('focusable trigger', () => (
         <Dropdown>
             <Trigger>
                 <div>
@@ -34,6 +38,35 @@ storiesOf('Dropdown', module)
             </Content>
         </Dropdown>
     ))
+    .add('disappearing focusable trigger', () => (
+        <State store={store}>
+            {state => (
+                <div>
+                    <Dropdown>
+                        <Trigger>
+                            <div>
+                                {
+                                    state.isTrue ? 
+                                        <div>Trigger</div> :
+                                        <input type="text" />
+                                }
+                            </div>
+                        </Trigger>
+                        <Content>
+                            <div style={{ padding: '0.5rem' }}>
+                                Content
+                            </div>
+                        </Content>
+                    </Dropdown>
+                    <button 
+                        onClick={() => {
+                            store.set({ isTrue: !store.get("isTrue") })
+                        }}
+                    >Toggle Trigger</button>
+                </div>
+            )}
+        </State>
+    ))
     .add('hoverable', () => (
         <Dropdown isHoverable>
             <Trigger>Trigger</Trigger>
@@ -45,8 +78,12 @@ storiesOf('Dropdown', module)
         </Dropdown>
     ))
     .add('controlled', () => (
-        <Dropdown hasFocus={boolean('Has Focus', false)}>
-            <Trigger isDisabled>Trigger</Trigger>
+        <Dropdown 
+            hasFocus={boolean('Has Focus', false)}
+            onHide={action('onHide')}
+            onShow={action('onShow')}
+        >
+            <Trigger>Trigger</Trigger>
             <Content>
                 I am content, hear me roar.
             </Content>

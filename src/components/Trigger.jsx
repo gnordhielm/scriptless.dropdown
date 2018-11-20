@@ -9,6 +9,7 @@ class Trigger extends React.Component {
     render = () => {
         const {
             _isActive, 
+            _passRef, 
             children, 
             className, 
             isDisabled,
@@ -18,6 +19,7 @@ class Trigger extends React.Component {
         return (
             <a
                 {...rest}
+                ref={_passRef}
                 onClick={isDisabled ? noop : onClick}
                 className={classNames(
                     'dropdown__trigger',
