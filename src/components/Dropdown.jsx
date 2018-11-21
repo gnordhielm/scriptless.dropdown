@@ -150,8 +150,6 @@ class Dropdown extends React.Component {
 				break
 			}
 
-		console.log('handle window click', dropdownNode, event.target, this.removedNodes);
-
 		if (isNotInDropdown && !wasRemovedFromDropdown) this.hide()
 	}
 
@@ -238,6 +236,7 @@ class Dropdown extends React.Component {
 					content, 'onMouseLeave', this.handleMouseLeave
 				),
 				style: {
+					...(content.props.style || {}),
 					position: 'absolute',
 					...finalPosition,
 				}
