@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { classNames } from '@leiops/helpers'
-import noop from '../utils/noop'
+import noop from '../../utils/noop'
 
 // DEV - this must maintain state in order to be referenceable in the parent
 

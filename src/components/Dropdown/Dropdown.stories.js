@@ -4,9 +4,9 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 import { State, Store } from "@sambego/storybook-state"
 
-import Dropdown from '../src/components/Dropdown.jsx'
-import Trigger from '../src/components/Trigger.jsx'
-import Content from '../src/components/Content.jsx'
+import Dropdown from '../Dropdown'
+import Trigger from '../Trigger'
+import Content from '../Content'
 
 const store = new Store({
     isTrue: false
@@ -132,4 +132,14 @@ storiesOf('Dropdown', module)
                 </Content>
             </Dropdown>
         </div>
+    ))
+    .add('style props', () => (
+        <Dropdown style={{ color: 'dodgerblue' }}>
+            <Trigger>Trigger</Trigger>
+            <Content>
+                <div style={{ padding: '0.5rem' }}>
+                    Content
+                </div>
+            </Content>
+        </Dropdown>
     ))

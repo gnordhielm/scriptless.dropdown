@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { classNames } from '@leiops/helpers'
-import isDefined from '../utils/isDefined'
-import getPageOffset from '../utils/getPageOffset'
-import noop from '../utils/noop'
-import squelchEvent from '../utils/squelchEvent'
-import Trigger from './Trigger.jsx'
-import Content from './Content.jsx'
+import isDefined from '../../utils/isDefined'
+import getPageOffset from '../../utils/getPageOffset'
+import noop from '../../utils/noop'
+import squelchEvent from '../../utils/squelchEvent'
+import Trigger from '../Trigger'
+import Content from '../Content'
 
 const minDropdownHeight = 200
 
@@ -128,8 +128,6 @@ class Dropdown extends React.Component {
 
 			return
 		}
-
-
 		
 		if (!this.state.hasFocus) return
 		
@@ -250,7 +248,8 @@ class Dropdown extends React.Component {
 			children,
 			className,
 			isDisabled,
-			shouldStopClickPropagation
+			shouldStopClickPropagation,
+			style,
 		} = this.props
 
 		const { hasFocus } = this.state
@@ -270,6 +269,7 @@ class Dropdown extends React.Component {
 					squelchEvent : 
 					undefined
 				}
+				style={style}
 			>
 				{React.Children.map(children, child => {
 					if (!child) 
