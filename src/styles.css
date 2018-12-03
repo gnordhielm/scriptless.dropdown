@@ -47,7 +47,7 @@
     fill: black;
 }
 
-.icon:first-child {
+.dropdown__content > .__item .icon:first-child {
     margin-right: 0.5rem;
     height: 1rem;
     width: 1rem;
