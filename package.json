@@ -1,11 +1,11 @@
 {
   "name": "@scriptless/dropdown",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "description": "A flexible dropdown component system for React apps.",
   "main": "./dist/main.js",
   "scripts": {
     "prepublishOnly": "yarn run dist",
-    "dist": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --color",
+    "dist": "cross-env NODE_ENV=production webpack --config ./webpack.config.js --color",
     "dev": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --color --watch",
     "storybook": "start-storybook -p 6007",
     "build-storybook": "build-storybook",
