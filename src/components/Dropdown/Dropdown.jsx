@@ -120,6 +120,10 @@ class Dropdown extends React.Component {
 
 		if (isTriggerClick)
 		{
+
+			this.props.onFocus()
+			// this.props.onTriggerFocus()
+
 			event.preventDefault()
 			if (this.state.hasFocus)
 				this.hide()
@@ -148,7 +152,16 @@ class Dropdown extends React.Component {
 				break
 			}
 
-		if (isNotInDropdown && !wasRemovedFromDropdown) this.hide()
+		if (isNotInDropdown && !wasRemovedFromDropdown) 
+		{
+			this.props.onBlur()
+			this.hide()
+		}
+		else if (!isNotInDropdown)
+		{
+			this.props.onFocus()
+			// this.props.onContentFocus()
+		}
 	}
 
 	handleMouseEnter = event => {
@@ -299,6 +312,10 @@ Dropdown.defaultProps = {
 	className: '',
 	onHide: noop,
 	onShow: noop,
+	onFocus: noop,
+	// onTriggerFocus: noop,
+	// onContentFocus: noop,
+	onBlur: noop,
 }
 
 Dropdown.propTypes = {
@@ -316,6 +333,14 @@ Dropdown.propTypes = {
 	onHide: PropTypes.func,
 	// called when the dropdown appears, or tells the parent component to remove focus
 	onShow: PropTypes.func,
+	// called when focus has moved to within the dropdown trigger
+	// onTriggerFocus: PropTypes.func,
+	// called when focus has moved to within the dropdown content
+	// onContentFocus: PropTypes.func,
+	// called when focus has moved to within the dropdown container
+	onFocus: PropTypes.func,
+	// called when focus has moved to outside the dropdown container
+	onBlur: PropTypes.func,
 	// should the dropdown intercept and stop events from bubbling up the DOM
 	shouldStopClickPropagation: PropTypes.bool,
 	// trigger and content
