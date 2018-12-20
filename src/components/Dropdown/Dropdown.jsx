@@ -133,7 +133,7 @@ class Dropdown extends React.Component {
 			return
 		}
 		
-		if (!this.state.hasFocus) return
+		// if (!this.state.hasFocus) return
 		
 		const dropdownNode = this.dropdownRef.current
 		const isNotInDropdown = (

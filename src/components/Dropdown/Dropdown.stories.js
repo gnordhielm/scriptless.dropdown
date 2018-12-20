@@ -89,6 +89,17 @@ storiesOf('Dropdown', module)
             </Content>
         </Dropdown>
     ))
+    .add('with onFocus and onBlur', () => (
+        <Dropdown 
+            onFocus={action('onFocus')}
+            onBlur={action('onBlur')}
+        >
+            <Trigger>Trigger</Trigger>
+            <Content>
+                I am content, hear me roar.
+            </Content>
+        </Dropdown>
+    ))
     .add('disabled trigger', () => (
         <Dropdown>
             <Trigger isDisabled>Trigger</Trigger>
