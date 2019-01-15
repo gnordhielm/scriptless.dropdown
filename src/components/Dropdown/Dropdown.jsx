@@ -35,7 +35,17 @@ class Dropdown extends React.Component {
 		hasFocus: false,
 	}
 
-	componentDidMount() {
+	removedNodes = []
+	removedTriggerNodes = []
+
+	componentDidMount() {		
+		this.triggerObserver.observe(
+			this.triggerRef.current,
+			{ 
+				childList: true,
+				subtree: true,
+			}
+		)
 		window.addEventListener('click', this.handleWindowClick)
 	}
 	
@@ -51,29 +61,33 @@ class Dropdown extends React.Component {
 		// gained focus
 		if (!lastState.hasFocus && this.state.hasFocus)
 		{
-			this.observer.observe(
+			this.contentObserver.observe(
 				this.dropdownRef.current,
 				{ 
 					childList: true,
 					subtree: true,
 				}
 			)
+
 		}
 		// lost focus
 		else if (lastState.hasFocus && !this.state.hasFocus)
 		{
 			this.removedNodes = []
-			this.observer.disconnect()
+			this.contentObserver.disconnect()
 		}
 			
 	}
 	
 	componentWillUnmount() {
 		window.removeEventListener('click', this.handleWindowClick)
-		this.observer.disconnect()
+		this.contentObserver.disconnect()
+		this.triggerObserver.disconnect()
 	}
 
 	handleMutation = mutationList => {
+		console.log('content mutation');
+		
 		for (let i in mutationList)
 			this.removedNodes = [
 				...this.removedNodes,
@@ -81,8 +95,18 @@ class Dropdown extends React.Component {
 			]
 	}
 
-	observer = new MutationObserver(this.handleMutation)
-	removedNodes = []
+	handleTriggerMutation = mutationList => {
+		
+		for (let i in mutationList)
+			this.removedTriggerNodes = [
+				...this.removedTriggerNodes,
+				...mutationList[i].removedNodes,
+			]
+		
+	}	
+
+	contentObserver = new MutationObserver(this.handleMutation)
+	triggerObserver = new MutationObserver(this.handleTriggerMutation)
 
 	hide = () => {
 		if (!this.state.hasFocus) return
@@ -112,17 +136,28 @@ class Dropdown extends React.Component {
 
 	handleWindowClick = event => {
 
+		let wasRemovedFromTrigger = false
+		for (let i in this.removedTriggerNodes)
+			if (this.removedTriggerNodes[i] === event.target ||
+				this.removedTriggerNodes[i].contains(event.target))
+			{
+				wasRemovedFromTrigger = true
+				break
+			}
+
 		const triggerNode = this.triggerRef.current
 		const isTriggerClick = (
 			triggerNode &&
 			(triggerNode === event.target || triggerNode.contains(event.target))
 		)
 
-		if (isTriggerClick)
-		{
+		console.log('this.triggerRef', this.triggerRef,);
+		console.log('isTriggerClick', isTriggerClick,);
+		console.log('wasRemovedFromTrigger', wasRemovedFromTrigger,);
+		
 
-			// this.props.onFocus()
-			// this.props.onTriggerFocus()
+		if (isTriggerClick || wasRemovedFromTrigger)
+		{
 
 			event.preventDefault()
 			if (this.state.hasFocus && !this.props.triggerShouldNotToggle)
