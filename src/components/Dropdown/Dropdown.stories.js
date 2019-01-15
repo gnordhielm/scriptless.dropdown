@@ -82,8 +82,26 @@ storiesOf('Dropdown', module)
             hasFocus={boolean('Has Focus', false)}
             onHide={action('onHide')}
             onShow={action('onShow')}
+            onFocus={action('onFocus')}
+            onBlur={action('onBlur')}
         >
             <Trigger>Trigger</Trigger>
+            <Content>
+                I am content, hear me roar.
+            </Content>
+        </Dropdown>
+    ))
+    // test - clicking to input should not trigger onHide
+    .add('complex controlled', () => (
+        <Dropdown 
+            hasFocus={boolean('Has Focus', true)}
+            onHide={action('onHide')}
+            onShow={action('onShow')}
+            triggerShouldNotToggle
+        >
+            <Trigger>
+                <input type="text"/>
+            </Trigger>
             <Content>
                 I am content, hear me roar.
             </Content>

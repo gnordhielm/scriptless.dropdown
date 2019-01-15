@@ -121,11 +121,11 @@ class Dropdown extends React.Component {
 		if (isTriggerClick)
 		{
 
-			this.props.onFocus()
+			// this.props.onFocus()
 			// this.props.onTriggerFocus()
 
 			event.preventDefault()
-			if (this.state.hasFocus)
+			if (this.state.hasFocus && !this.props.triggerShouldNotToggle)
 				this.hide()
 			else
 				this.show()
@@ -313,9 +313,8 @@ Dropdown.defaultProps = {
 	onHide: noop,
 	onShow: noop,
 	onFocus: noop,
-	// onTriggerFocus: noop,
-	// onContentFocus: noop,
 	onBlur: noop,
+	triggerShouldNotToggle: false,
 }
 
 Dropdown.propTypes = {
@@ -348,7 +347,9 @@ Dropdown.propTypes = {
 	// extra classnames
 	className: PropTypes.string,
 	// custom styles prop
-	style: PropTypes.object
+	style: PropTypes.object,
+	// stops onhide from being called when the trigger is clicked while dropdown is open
+	triggerShouldNotToggle: PropTypes.bool,
 }
 
 export default Dropdown
