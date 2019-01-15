@@ -86,8 +86,6 @@ class Dropdown extends React.Component {
 	}
 
 	handleMutation = mutationList => {
-		console.log('content mutation');
-		
 		for (let i in mutationList)
 			this.removedNodes = [
 				...this.removedNodes,
@@ -150,11 +148,6 @@ class Dropdown extends React.Component {
 			triggerNode &&
 			(triggerNode === event.target || triggerNode.contains(event.target))
 		)
-
-		console.log('this.triggerRef', this.triggerRef,);
-		console.log('isTriggerClick', isTriggerClick,);
-		console.log('wasRemovedFromTrigger', wasRemovedFromTrigger,);
-		
 
 		if (isTriggerClick || wasRemovedFromTrigger)
 		{
