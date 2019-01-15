@@ -23,6 +23,7 @@ class Content extends React.Component {
     }
 }
 
+Content.displayName = "Content"
 
 Content.propTypes = {
     children: PropTypes.node.isRequired,

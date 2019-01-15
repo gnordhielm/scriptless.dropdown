@@ -335,6 +335,8 @@ class Dropdown extends React.Component {
 	}
 }
 
+Dropdown.displayName = "Dropdown"
+
 Dropdown.defaultProps = {
 	justify: 'left',
 	justifyOffset: '0',

@@ -33,6 +33,8 @@ class Trigger extends React.Component {
     }
 }
 
+Trigger.displayName = "Trigger"
+
 Trigger.propTypes = {
     children: PropTypes.node.isRequired,
     _isActive: PropTypes.bool,
