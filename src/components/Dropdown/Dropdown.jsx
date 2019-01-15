@@ -38,7 +38,8 @@ class Dropdown extends React.Component {
 	removedNodes = []
 	removedTriggerNodes = []
 
-	componentDidMount() {		
+	componentDidMount() {
+				
 		this.triggerObserver.observe(
 			this.triggerRef.current,
 			{ 
