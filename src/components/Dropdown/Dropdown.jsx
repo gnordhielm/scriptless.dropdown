@@ -250,13 +250,15 @@ class Dropdown extends React.Component {
 
 	renderContent = content => {
 
-		if (!this.dropdownRef.current) return null
+		// if (!this.dropdownRef.current) return null
 
+		const position = this.dropdownRef.current && 
+			getPosition(this.dropdownRef.current)
+		const isBelow = position ?
+			(position.bottom + minDropdownHeight) < window.innerHeight :
+			true
+		
 		const finalPosition = {}
-		const position = getPosition(this.dropdownRef.current)
-
-		const isBelow = (position.bottom + minDropdownHeight) < window.innerHeight
-
 		if (isBelow)
 			finalPosition.top = '100%'
 		else
