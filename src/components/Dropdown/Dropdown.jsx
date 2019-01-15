@@ -47,9 +47,13 @@ class Dropdown extends React.Component {
 				subtree: true,
 			}
 		)
-		window.addEventListener('click', this.handleWindowClick)
+
+		// DEV - stops click events fired before mount from reaching the component
+		setTimeout(() => {
+			window.addEventListener('click', this.handleWindowClick)
+		})
 	}
-	
+
 	static getDerivedStateFromProps(props, state) {
 		if (props.hasFocus === state.hasFocus ||
 			!isDefined(props.hasFocus))
@@ -81,6 +85,7 @@ class Dropdown extends React.Component {
 	}
 	
 	componentWillUnmount() {
+		
 		window.removeEventListener('click', this.handleWindowClick)
 		this.contentObserver.disconnect()
 		this.triggerObserver.disconnect()
